@@ -18,7 +18,8 @@ async def process_start_command(message: types.Message):
 
 @dp.message_handler(content_types=['text'])
 async def GPt_answer(message: types.Message):
-    await message.answer(gpt_responce(message.text))
+    user_id = message.from_user.id
+    await message.answer(gpt_responce(user_id, message.text))
 
 async def main():
     await dp.start_polling()
